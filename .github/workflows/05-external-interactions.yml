@@ -11,7 +11,9 @@ jobs:
 
       - name: Install PowerPlatformChecker
         shell: pwsh
-        run: Install-Module -Name PowerPlatformChecker -Scope CurrentUser -Force
+        run: |
+          Install-Module -Name PowerPlatformChecker -Scope CurrentUser -Force
+          Get-InstalledModule -Name PowerPlatformChecker, TelemetryHelper | Format-Table Name, Version
 
       - name: Generate external interaction map
         shell: pwsh
