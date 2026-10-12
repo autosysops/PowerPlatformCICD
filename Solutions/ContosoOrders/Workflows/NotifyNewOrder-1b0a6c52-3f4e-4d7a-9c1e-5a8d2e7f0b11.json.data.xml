@@ -1,0 +1,5 @@
+<Workflow WorkflowId="{1b0a6c52-3f4e-4d7a-9c1e-5a8d2e7f0b11}" Name="Notify new order" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/NotifyNewOrder-1b0a6c52-3f4e-4d7a-9c1e-5a8d2e7f0b11.json</JsonFileName>
+  <Category>5</Category>
+  <Description>Emails the sales team when a new order is added to the SharePoint orders list.</Description>
+</Workflow>

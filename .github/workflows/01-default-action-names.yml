@@ -1,0 +1,22 @@
+name: Demo 1 - Default action names
+
+# Run manually from the Actions tab, or automatically when a pull request changes a solution
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'Solutions/**'
+
+jobs:
+  check-action-names:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PowerPlatformChecker
+        shell: pwsh
+        run: Install-Module -Name PowerPlatformChecker -Scope CurrentUser -Force
+
+      - name: Check action names
+        shell: pwsh
+        run: ./Scripts/01-Test-ActionNames.ps1

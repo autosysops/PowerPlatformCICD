@@ -1,0 +1,5 @@
+<Workflow WorkflowId="{9d2c7b41-5e8a-4c06-8f3b-2a6e1d9c4b44}" Name="Receive shipment request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/ReceiveShipmentRequest-9d2c7b41-5e8a-4c06-8f3b-2a6e1d9c4b44.json</JsonFileName>
+  <Category>5</Category>
+  <Description>Webhook that the webshop calls to book a shipment at the carrier.</Description>
+</Workflow>

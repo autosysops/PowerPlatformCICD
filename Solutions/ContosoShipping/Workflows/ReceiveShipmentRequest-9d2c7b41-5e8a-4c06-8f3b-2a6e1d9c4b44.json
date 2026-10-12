@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "parameters": {
+        "$authentication": { "defaultValue": {}, "type": "SecureObject" },
+        "$connections": { "defaultValue": {}, "type": "Object" }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Http",
+          "inputs": { "schema": {} }
+        }
+      },
+      "actions": {
+        "Create_shipment_at_carrier": {
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "https://api.carrier.example/v1/shipments",
+            "body": "@triggerBody()"
+          },
+          "runAfter": {}
+        },
+        "Respond_to_caller": {
+          "type": "Response",
+          "kind": "Http",
+          "inputs": { "statusCode": 200 },
+          "runAfter": {
+            "Create_shipment_at_carrier": ["Succeeded"]
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

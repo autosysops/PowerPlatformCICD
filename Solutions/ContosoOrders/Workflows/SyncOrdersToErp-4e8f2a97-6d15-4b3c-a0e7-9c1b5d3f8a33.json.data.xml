@@ -1,0 +1,5 @@
+<Workflow WorkflowId="{4e8f2a97-6d15-4b3c-a0e7-9c1b5d3f8a33}" Name="Sync orders to ERP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/SyncOrdersToErp-4e8f2a97-6d15-4b3c-a0e7-9c1b5d3f8a33.json</JsonFileName>
+  <Category>5</Category>
+  <Description></Description>
+</Workflow>

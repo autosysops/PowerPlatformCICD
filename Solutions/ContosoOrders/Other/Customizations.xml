@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml>
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="contoso_sharedsharepointonline">
+      <connectionreferencedisplayname>SharePoint</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sharepointonline</connectorid>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="contoso_sharedoffice365">
+      <connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="contoso_sharedsql">
+      <connectionreferencedisplayname>SQL Server</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sql</connectorid>
+    </connectionreference>
+  </connectionreferences>
+</ImportExportXml>

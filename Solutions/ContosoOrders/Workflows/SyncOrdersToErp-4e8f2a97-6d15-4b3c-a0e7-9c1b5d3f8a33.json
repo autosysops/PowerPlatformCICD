@@ -1,0 +1,98 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "api": { "name": "shared_sql" },
+        "connection": { "connectionReferenceLogicalName": "contoso_sharedsql" },
+        "runtimeSource": "embedded"
+      },
+      "shared_office365": {
+        "api": { "name": "shared_office365" },
+        "connection": { "connectionReferenceLogicalName": "contoso_sharedoffice365" },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "parameters": {
+        "$authentication": { "defaultValue": {}, "type": "SecureObject" },
+        "$connections": { "defaultValue": {}, "type": "Object" },
+        "Erp Base Url (contoso_ErpBaseUrl)": {
+          "defaultValue": "https://erp.contoso.example/api",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_ErpBaseUrl" }
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "type": "Recurrence",
+          "recurrence": { "frequency": "Hour", "interval": 1 }
+        }
+      },
+      "actions": {
+        "Get_rows_(V2)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "server": "sql.contoso.example",
+              "database": "Orders",
+              "table": "[dbo].[Orders]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+              "operationId": "GetItemsV2",
+              "connectionName": "shared_sql"
+            }
+          },
+          "runAfter": {}
+        },
+        "Condition": {
+          "type": "If",
+          "expression": "@greater(length(outputs('Get_rows_(V2)')?['body/value']), 0)",
+          "actions": {
+            "Apply_to_each": {
+              "type": "Foreach",
+              "foreach": "@outputs('Get_rows_(V2)')?['body/value']",
+              "actions": {
+                "HTTP": {
+                  "type": "Http",
+                  "inputs": {
+                    "method": "POST",
+                    "uri": "@{parameters('Erp Base Url (contoso_ErpBaseUrl)')}/orders",
+                    "body": "@items('Apply_to_each')"
+                  },
+                  "runAfter": {}
+                }
+              },
+              "runAfter": {}
+            }
+          },
+          "else": {
+            "actions": {}
+          },
+          "runAfter": {
+            "Get_rows_(V2)": ["Succeeded"]
+          }
+        },
+        "Send_an_email_(V2)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "emailMessage/To": "it@contoso.example",
+              "emailMessage/Subject": "ERP sync finished",
+              "emailMessage/Body": "Done."
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "SendEmailV2",
+              "connectionName": "shared_office365"
+            }
+          },
+          "runAfter": {
+            "Condition": ["Succeeded"]
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

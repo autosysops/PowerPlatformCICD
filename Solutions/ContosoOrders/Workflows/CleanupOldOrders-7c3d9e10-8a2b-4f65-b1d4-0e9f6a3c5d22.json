@@ -1,0 +1,60 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": { "name": "shared_sharepointonline" },
+        "connection": { "connectionReferenceLogicalName": "contoso_sharedsharepointonline" },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "parameters": {
+        "$authentication": { "defaultValue": {}, "type": "SecureObject" },
+        "$connections": { "defaultValue": {}, "type": "Object" }
+      },
+      "triggers": {
+        "Recurrence": {
+          "type": "Recurrence",
+          "recurrence": { "frequency": "Day", "interval": 1 }
+        }
+      },
+      "actions": {
+        "Get_items": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://contoso.sharepoint.com/sites/Sales",
+              "table": "Orders",
+              "$filter": "Status eq 'Expired'"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetItems",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {}
+        },
+        "Delete_expired_orders": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://contoso.sharepoint.com/sites/Sales",
+              "table": "Orders",
+              "id": "@first(outputs('Get_items')?['body/value'])?['ID']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "DeleteItem",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {
+            "Get_items": ["Succeeded"]
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

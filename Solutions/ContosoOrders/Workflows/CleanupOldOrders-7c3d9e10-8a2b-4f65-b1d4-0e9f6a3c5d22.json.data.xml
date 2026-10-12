@@ -1,0 +1,5 @@
+<Workflow WorkflowId="{7c3d9e10-8a2b-4f65-b1d4-0e9f6a3c5d22}" Name="Cleanup old orders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <JsonFileName>/Workflows/CleanupOldOrders-7c3d9e10-8a2b-4f65-b1d4-0e9f6a3c5d22.json</JsonFileName>
+  <Category>5</Category>
+  <Description>Runs every night and deletes orders that have expired.</Description>
+</Workflow>

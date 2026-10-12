@@ -1,0 +1,76 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": { "name": "shared_sharepointonline" },
+        "connection": { "connectionReferenceLogicalName": "contoso_sharedsharepointonline" },
+        "runtimeSource": "embedded"
+      },
+      "shared_office365": {
+        "api": { "name": "shared_office365" },
+        "connection": { "connectionReferenceLogicalName": "contoso_sharedoffice365" },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "parameters": {
+        "$authentication": { "defaultValue": {}, "type": "SecureObject" },
+        "$connections": { "defaultValue": {}, "type": "Object" }
+      },
+      "triggers": {
+        "When_an_item_is_created": {
+          "type": "OpenApiConnection",
+          "recurrence": { "frequency": "Minute", "interval": 5 },
+          "inputs": {
+            "parameters": {
+              "dataset": "https://contoso.sharepoint.com/sites/Sales",
+              "table": "Orders"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetOnNewItems",
+              "connectionName": "shared_sharepointonline"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_order_details": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://contoso.sharepoint.com/sites/Sales",
+              "table": "Orders",
+              "id": "@triggerOutputs()?['body/ID']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetItem",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {}
+        },
+        "Email_sales_team": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "emailMessage/To": "sales@contoso.example",
+              "emailMessage/Subject": "New order received",
+              "emailMessage/Body": "A new order was added."
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "SendEmailV2",
+              "connectionName": "shared_office365"
+            }
+          },
+          "runAfter": {
+            "Get_order_details": ["Succeeded"]
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

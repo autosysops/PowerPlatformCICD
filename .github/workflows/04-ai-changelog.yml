@@ -1,0 +1,31 @@
+name: Demo 4 - AI changelog
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'Solutions/**'
+
+jobs:
+  create-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      # Fetch the full history, we need the old version of the solution to compare with
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # In a pull request we compare with the target branch, a manual run compares with the previous commit
+      - name: Generate changelog
+        shell: pwsh
+        env:
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+        run: ./Scripts/04-New-Changelog.ps1 -BaseRef '${{ github.event.pull_request.base.sha || 'HEAD~1' }}'
+
+      - name: Publish changelog
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog
+          path: Docs/CHANGELOG.md

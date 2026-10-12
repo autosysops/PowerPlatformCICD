@@ -1,0 +1,18 @@
+name: Bonus demo - External interactions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-interaction-map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PowerPlatformChecker
+        shell: pwsh
+        run: Install-Module -Name PowerPlatformChecker -Scope CurrentUser -Force
+
+      - name: Generate external interaction map
+        shell: pwsh
+        run: ./Scripts/05-New-ExternalInteractionMap.ps1
