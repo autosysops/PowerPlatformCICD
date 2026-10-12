@@ -17,4 +17,4 @@ jobs:
 
       - name: Generate external interaction map
         shell: pwsh
-        run: ./Scripts/05-New-ExternalInteractionMap.ps1
+        run: ./Scripts/04-New-ExternalInteractionMap.ps1

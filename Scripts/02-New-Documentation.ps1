@@ -1,4 +1,4 @@
-# Demo 3 - Generate documentation for every solution.
+# Demo 2 - Generate documentation for every solution.
 # The result is one markdown file per solution with an architecture diagram and a flowchart per flow.
 
 Import-Module PowerPlatformChecker

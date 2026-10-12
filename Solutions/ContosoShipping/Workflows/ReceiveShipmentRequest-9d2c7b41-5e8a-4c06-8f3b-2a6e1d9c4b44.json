@@ -21,7 +21,8 @@
             "uri": "https://api.carrier.example/v1/shipments",
             "body": "@triggerBody()"
           },
-          "runAfter": {}
+          "runAfter": {},
+          "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
         },
         "Respond_to_caller": {
           "type": "Response",

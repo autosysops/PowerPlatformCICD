@@ -49,7 +49,8 @@
               "connectionName": "shared_sharepointonline"
             }
           },
-          "runAfter": {}
+          "runAfter": {},
+          "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
         },
         "Email_sales_team": {
           "type": "OpenApiConnection",
@@ -67,7 +68,8 @@
           },
           "runAfter": {
             "Get_order_details": ["Succeeded"]
-          }
+          },
+          "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
         }
       }
     }

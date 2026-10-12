@@ -1,4 +1,4 @@
-name: Demo 4 - AI changelog
+name: Demo 3 - AI changelog
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
         env:
           # Fine-grained personal access token with the "Copilot Requests" permission
           COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
-        run: ./Scripts/04-New-Changelog.ps1 -BaseRef '${{ github.event.pull_request.base.sha || 'HEAD~1' }}'
+        run: ./Scripts/03-New-Changelog.ps1 -BaseRef '${{ github.event.pull_request.base.sha || 'HEAD~1' }}'
 
       - name: Publish changelog
         uses: actions/upload-artifact@v4

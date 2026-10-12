@@ -1,4 +1,4 @@
-# Demo 4 - Generate a changelog for a pull request with AI.
+# Demo 3 - Generate a changelog for a pull request with AI.
 # Git gives us the exact changes in the solution files, GitHub Copilot turns them into readable release notes.
 
 param (

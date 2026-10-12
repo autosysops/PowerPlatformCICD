@@ -10,11 +10,10 @@ All solutions in this repository are made up for the demo.
 
 | Workflow | Script | What it shows |
 |---|---|---|
-| [Demo 1 - Default action names](.github/workflows/01-default-action-names.yml) | [01-Test-ActionNames.ps1](Scripts/01-Test-ActionNames.ps1) | Fails when actions are not renamed (`Apply_to_each`, `HTTP`, ...) |
-| [Demo 2 - Connectors and parameters](.github/workflows/02-connectors-and-parameters.yml) | [02-Test-ConnectorsAndParameters.ps1](Scripts/02-Test-ConnectorsAndParameters.ps1) | Fails on premium connectors, warns on missing descriptions |
-| [Demo 3 - Documentation](.github/workflows/03-documentation.yml) | [03-New-Documentation.ps1](Scripts/03-New-Documentation.ps1) | Generates architecture diagrams and flow charts |
-| [Demo 4 - AI changelog](.github/workflows/04-ai-changelog.yml) | [04-New-Changelog.ps1](Scripts/04-New-Changelog.ps1) | Turns the solution changes of a pull request into release notes with GitHub Copilot |
-| [Bonus demo - External interactions](.github/workflows/05-external-interactions.yml) | [05-New-ExternalInteractionMap.ps1](Scripts/05-New-ExternalInteractionMap.ps1) | Shows which domains the solutions call and which flows are open to the internet |
+| [Demo 1 - Lint the flows](.github/workflows/01-lint-flows.yml) | [01-Test-Flows.ps1](Scripts/01-Test-Flows.ps1) | Fails on default action names and premium connectors, warns on missing secure inputs/outputs and descriptions |
+| [Demo 2 - Documentation](.github/workflows/02-documentation.yml) | [02-New-Documentation.ps1](Scripts/02-New-Documentation.ps1) | Generates architecture diagrams and flow charts |
+| [Demo 3 - AI changelog](.github/workflows/03-ai-changelog.yml) | [03-New-Changelog.ps1](Scripts/03-New-Changelog.ps1) | Turns the solution changes of a pull request into release notes with GitHub Copilot |
+| [Bonus demo - External interactions](.github/workflows/04-external-interactions.yml) | [04-New-ExternalInteractionMap.ps1](Scripts/04-New-ExternalInteractionMap.ps1) | Shows which domains the solutions call and which flows are open to the internet |
 
 ## Repository layout
 
@@ -26,11 +25,11 @@ Solutions/           Unpacked demo solutions
   ContosoShipping/   A webhook flow that calls an external API
 ```
 
-## Setup for demo 4
+## Setup for demo 3
 
-Demo 4 uses GitHub Copilot CLI. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with the **Copilot Requests** permission and save it as the repository secret `COPILOT_GITHUB_TOKEN`.
+Demo 3 uses GitHub Copilot CLI. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with the **Copilot Requests** permission and save it as the repository secret `COPILOT_GITHUB_TOKEN`.
 
 ## Running the demos
 
-Each workflow can be started from the **Actions** tab with *Run workflow*. Demos 1, 2 and 4 also run on every pull request that changes a solution.
+Each workflow can be started from the **Actions** tab with *Run workflow*. Demos 1 and 3 also run on every pull request that changes a solution.
 The results are shown as annotations and as a summary on the run page.

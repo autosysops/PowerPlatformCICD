@@ -1,14 +1,15 @@
-name: Demo 1 - Default action names
+name: Demo 2 - Documentation
 
-# Run manually from the Actions tab, or automatically when a pull request changes a solution
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - main
     paths:
       - 'Solutions/**'
 
 jobs:
-  check-action-names:
+  create-documentation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,6 +20,13 @@ jobs:
           Install-Module -Name PowerPlatformChecker -Scope CurrentUser -Force
           Get-InstalledModule -Name PowerPlatformChecker, TelemetryHelper | Format-Table Name, Version
 
-      - name: Check action names
+      - name: Generate documentation
         shell: pwsh
-        run: ./Scripts/01-Test-ActionNames.ps1
+        run: ./Scripts/02-New-Documentation.ps1
+
+      # The markdown files can be downloaded from the run page
+      - name: Publish documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: Docs
