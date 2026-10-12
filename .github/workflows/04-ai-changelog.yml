@@ -15,13 +15,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Copilot CLI
+        run: npm install -g @github/copilot
+
       # In a pull request we compare with the target branch, a manual run compares with the previous commit
       - name: Generate changelog
         shell: pwsh
         env:
-          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
-          AZURE_OPENAI_KEY: ${{ secrets.AZURE_OPENAI_KEY }}
-          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+          # Fine-grained personal access token with the "Copilot Requests" permission
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
         run: ./Scripts/04-New-Changelog.ps1 -BaseRef '${{ github.event.pull_request.base.sha || 'HEAD~1' }}'
 
       - name: Publish changelog

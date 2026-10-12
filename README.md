@@ -13,7 +13,7 @@ All solutions in this repository are made up for the demo.
 | [Demo 1 - Default action names](.github/workflows/01-default-action-names.yml) | [01-Test-ActionNames.ps1](Scripts/01-Test-ActionNames.ps1) | Fails when actions are not renamed (`Apply_to_each`, `HTTP`, ...) |
 | [Demo 2 - Connectors and parameters](.github/workflows/02-connectors-and-parameters.yml) | [02-Test-ConnectorsAndParameters.ps1](Scripts/02-Test-ConnectorsAndParameters.ps1) | Fails on premium connectors, warns on missing descriptions |
 | [Demo 3 - Documentation](.github/workflows/03-documentation.yml) | [03-New-Documentation.ps1](Scripts/03-New-Documentation.ps1) | Generates architecture diagrams and flow charts |
-| [Demo 4 - AI changelog](.github/workflows/04-ai-changelog.yml) | [04-New-Changelog.ps1](Scripts/04-New-Changelog.ps1) | Turns the solution changes of a pull request into release notes |
+| [Demo 4 - AI changelog](.github/workflows/04-ai-changelog.yml) | [04-New-Changelog.ps1](Scripts/04-New-Changelog.ps1) | Turns the solution changes of a pull request into release notes with GitHub Copilot |
 | [Bonus demo - External interactions](.github/workflows/05-external-interactions.yml) | [05-New-ExternalInteractionMap.ps1](Scripts/05-New-ExternalInteractionMap.ps1) | Shows which domains the solutions call and which flows are open to the internet |
 
 ## Repository layout
@@ -28,11 +28,7 @@ Solutions/           Unpacked demo solutions
 
 ## Setup for demo 4
 
-Demo 4 calls an Azure OpenAI deployment. Add these repository secrets:
-
-- `AZURE_OPENAI_ENDPOINT` (for example `https://my-resource.openai.azure.com`)
-- `AZURE_OPENAI_KEY`
-- `AZURE_OPENAI_DEPLOYMENT` (the name of your chat model deployment)
+Demo 4 uses GitHub Copilot CLI. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with the **Copilot Requests** permission and save it as the repository secret `COPILOT_GITHUB_TOKEN`.
 
 ## Running the demos
 

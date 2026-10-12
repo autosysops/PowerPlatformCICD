@@ -1,5 +1,5 @@
 # Demo 4 - Generate a changelog for a pull request with AI.
-# Git gives us the exact changes in the solution files, an Azure OpenAI model turns them into readable release notes.
+# Git gives us the exact changes in the solution files, GitHub Copilot turns them into readable release notes.
 
 param (
     # The commit to compare with, in a pull request this is the target branch
@@ -15,30 +15,22 @@ if ([string]::IsNullOrWhiteSpace($diff)) {
     exit 0
 }
 
-Write-Host "::group::Changes sent to the model"
+Write-Host "::group::Changes sent to Copilot"
 Write-Host $diff
 Write-Host "::endgroup::"
 
-# The prompt tells the model what kind of text we expect back
-$systemPrompt = @'
+# The prompt tells Copilot what kind of text we expect back, followed by the changes
+$prompt = @"
 You write release notes for Power Platform solutions.
-You get a git diff of unpacked solution files, mostly Power Automate flow JSON.
+Below is a git diff of unpacked solution files, mostly Power Automate flow JSON.
 Write a short changelog in markdown with the headings Added, Changed and Removed.
 Use the flow and action names a business user would recognize. Skip empty headings and do not mention file paths.
-'@
 
-$body = @{
-    messages = @(
-        @{ role = 'system'; content = $systemPrompt }
-        @{ role = 'user'; content = $diff }
-    )
-} | ConvertTo-Json -Depth 5
+$diff
+"@
 
-# Azure OpenAI chat completions endpoint, the settings come from the repository secrets
-$uri = "$env:AZURE_OPENAI_ENDPOINT/openai/deployments/$env:AZURE_OPENAI_DEPLOYMENT/chat/completions?api-version=2024-06-01"
-$response = Invoke-RestMethod -Uri $uri -Method Post -Headers @{ 'api-key' = $env:AZURE_OPENAI_KEY } -ContentType 'application/json' -Body $body
-
-$changelog = $response.choices[0].message.content
+# -p runs Copilot CLI once without a chat session, --silent returns only the answer
+$changelog = copilot -p $prompt --silent --no-ask-user | Out-String
 
 Write-Host $changelog
 
