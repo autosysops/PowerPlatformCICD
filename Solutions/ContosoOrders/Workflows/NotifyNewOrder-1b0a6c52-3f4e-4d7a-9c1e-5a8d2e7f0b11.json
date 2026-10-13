@@ -52,13 +52,21 @@
           "runAfter": {},
           "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
         },
-        "Email_sales_team": {
+        "Build_order_notification": {
+          "type": "Compose",
+          "inputs": "@concat('New order: ', outputs('Get_order_details')?['body/Title'], ' (ID: ', string(outputs('Get_order_details')?['body/ID']), ')')",
+          "runAfter": {
+            "Get_order_details": ["Succeeded"]
+          },
+          "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
+        },
+        "Notify_sales_of_new_order": {
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
               "emailMessage/To": "sales@contoso.example",
               "emailMessage/Subject": "New order received",
-              "emailMessage/Body": "A new order was added."
+              "emailMessage/Body": "@outputs('Build_order_notification')"
             },
             "host": {
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
@@ -67,7 +75,7 @@
             }
           },
           "runAfter": {
-            "Get_order_details": ["Succeeded"]
+            "Build_order_notification": ["Succeeded"]
           },
           "runtimeConfiguration": { "secureData": { "properties": [ "inputs", "outputs" ] } }
         }
