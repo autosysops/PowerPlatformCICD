@@ -14,4 +14,22 @@
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_sql</connectorid>
     </connectionreference>
   </connectionreferences>
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <SolutionPluginAssemblies />
+  <EntityDataProviders />
+  <EnvironmentVariableDefinitions>
+    <EnvironmentVariableDefinition schemaName="contoso_ErpBaseUrl" />
+  </EnvironmentVariableDefinitions>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
 </ImportExportXml>

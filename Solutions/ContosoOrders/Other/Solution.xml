@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>ContosoOrders</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Contoso Orders" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Demo solution for order processing flows." languagecode="1033" />
+    </Descriptions>
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>ContosoDemoPublisher</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Contoso Demo Publisher" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Publisher for the PowerPlatformCICD demo solutions." languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true" />
+      <SupportingWebsiteUrl xsi:nil="true" />
+      <CustomizationPrefix>contoso</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>10000</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address><AddressNumber>1</AddressNumber><AddressTypeCode>1</AddressTypeCode><ShippingMethodCode>1</ShippingMethodCode></Address>
+        <Address><AddressNumber>2</AddressNumber><AddressTypeCode>1</AddressTypeCode><ShippingMethodCode>1</ShippingMethodCode></Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{7c3d9e10-8a2b-4f65-b1d4-0e9f6a3c5d22}" />
+      <RootComponent type="29" id="{1b0a6c52-3f4e-4d7a-9c1e-5a8d2e7f0b11}" />
+      <RootComponent type="29" id="{4e8f2a97-6d15-4b3c-a0e7-9c1b5d3f8a33}" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>
