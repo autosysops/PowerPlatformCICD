@@ -11,7 +11,7 @@ All solutions in this repository are made up for the demo.
 | Workflow | Script | What it shows |
 |---|---|---|
 | [Demo 1 - Lint the flows](.github/workflows/01-lint-flows.yml) | [01-Test-Flows.ps1](Scripts/01-Test-Flows.ps1) | Fails on default action names and premium connectors, warns on missing secure inputs/outputs and descriptions |
-| [Demo 2 - Documentation](.github/workflows/02-documentation.yml) | [02-New-Documentation.ps1](Scripts/02-New-Documentation.ps1) | Generates architecture diagrams and flow charts |
+| [Demo 2 - Documentation](.github/workflows/02-documentation.yml) | [02-New-Documentation.ps1](Scripts/02-New-Documentation.ps1) | Generates architecture diagrams and flow charts, and warns about Apply to each loops without an explicit concurrency setting |
 | [Demo 3 - AI changelog](.github/workflows/03-ai-changelog.yml) | [03-New-Changelog.ps1](Scripts/03-New-Changelog.ps1) | Turns the solution changes of a pull request into release notes with GitHub Copilot |
 | [Bonus demo - External interactions](.github/workflows/04-external-interactions.yml) | [04-New-ExternalInteractionMap.ps1](Scripts/04-New-ExternalInteractionMap.ps1) | Shows which domains the solutions call and which flows are open to the internet |
 
