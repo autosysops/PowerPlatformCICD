@@ -4,7 +4,7 @@
       "SchemaName": "contoso_SharePointSite",
       "Value": "https://autosysops.sharepoint.com/sites/PowerPlatformPipeline",
       "DefaultValue": "https://contoso.sharepoint.com/sites/Sales",
-      "Name": { "1033": "SharePoint Site" },
+      "Name": { "Default": "SharePoint Site", "ByLcid": { "1033": "SharePoint Site" } },
       "TypeId": 100000000,
       "IsRequired": false
     },
@@ -12,7 +12,7 @@
       "SchemaName": "contoso_SharePointList",
       "Value": "",
       "DefaultValue": "Orders",
-      "Name": { "1033": "SharePoint List" },
+      "Name": { "Default": "SharePoint List", "ByLcid": { "1033": "SharePoint List" } },
       "TypeId": 100000000,
       "IsRequired": false
     },
@@ -20,7 +20,7 @@
       "SchemaName": "contoso_SqlServer",
       "Value": "pppipeline-se-150a2e27.database.windows.net",
       "DefaultValue": "sql.contoso.example",
-      "Name": { "1033": "SQL Server" },
+      "Name": { "Default": "SQL Server", "ByLcid": { "1033": "SQL Server" } },
       "TypeId": 100000000,
       "IsRequired": false
     },
@@ -28,7 +28,7 @@
       "SchemaName": "contoso_SqlDatabase",
       "Value": "",
       "DefaultValue": "Orders",
-      "Name": { "1033": "SQL Database" },
+      "Name": { "Default": "SQL Database", "ByLcid": { "1033": "SQL Database" } },
       "TypeId": 100000000,
       "IsRequired": false
     }
