@@ -56,7 +56,7 @@
             },
             "host": {
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
-              "operationId": "GetItemsV2",
+              "operationId": "GetItems_V2",
               "connectionName": "shared_sql"
             }
           },

@@ -48,7 +48,7 @@ The flows are packaged as drafts so they do not start scheduled jobs, delete ite
 1. Install Power Platform CLI and package the unpacked solution from the repository root:
 
   ```powershell
-  pac solution pack --folder ./Solutions/ContosoOrders --zipfile ./ContosoOrders.zip --packagetype Unmanaged
+  pac solution pack --folder ./Solutions/ContosoOrders --zipfile ./ContosoOrders-1.0.0.2.zip --packagetype Unmanaged
   ```
 
 2. In the target environment, create authenticated connections for SharePoint, Office 365 Outlook and SQL Server. A working SQL connection requires a reachable server and valid credentials; an on-premises or private server may require an on-premises data gateway.
