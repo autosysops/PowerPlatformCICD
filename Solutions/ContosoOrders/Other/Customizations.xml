@@ -4,14 +4,26 @@
     <connectionreference connectionreferencelogicalname="contoso_sharedsharepointonline">
       <connectionreferencedisplayname>SharePoint</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_sharepointonline</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
     </connectionreference>
     <connectionreference connectionreferencelogicalname="contoso_sharedoffice365">
       <connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
     </connectionreference>
     <connectionreference connectionreferencelogicalname="contoso_sharedsql">
       <connectionreferencedisplayname>SQL Server</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_sql</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
     </connectionreference>
   </connectionreferences>
   <Entities />
@@ -26,9 +38,6 @@
   <CustomControls />
   <SolutionPluginAssemblies />
   <EntityDataProviders />
-  <EnvironmentVariableDefinitions>
-    <EnvironmentVariableDefinition schemaName="contoso_ErpBaseUrl" />
-  </EnvironmentVariableDefinitions>
   <Languages>
     <Language>1033</Language>
   </Languages>

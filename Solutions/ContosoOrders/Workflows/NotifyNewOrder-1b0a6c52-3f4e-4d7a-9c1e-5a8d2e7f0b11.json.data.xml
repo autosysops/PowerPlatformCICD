@@ -1,5 +1,27 @@
 <Workflow WorkflowId="{1b0a6c52-3f4e-4d7a-9c1e-5a8d2e7f0b11}" Name="Notify new order" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <JsonFileName>/Workflows/NotifyNewOrder-1b0a6c52-3f4e-4d7a-9c1e-5a8d2e7f0b11.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
   <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
   <Description>Emails the sales team when a new order is added to the SharePoint orders list.</Description>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Notify new order" />
+  </LocalizedNames>
 </Workflow>

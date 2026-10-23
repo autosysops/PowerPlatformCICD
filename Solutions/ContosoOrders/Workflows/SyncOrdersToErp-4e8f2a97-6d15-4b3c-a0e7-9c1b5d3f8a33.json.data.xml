@@ -1,5 +1,27 @@
 <Workflow WorkflowId="{4e8f2a97-6d15-4b3c-a0e7-9c1b5d3f8a33}" Name="Sync orders to ERP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <JsonFileName>/Workflows/SyncOrdersToErp-4e8f2a97-6d15-4b3c-a0e7-9c1b5d3f8a33.json</JsonFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
   <Category>5</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>none</PrimaryEntity>
   <Description></Description>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Sync orders to ERP" />
+  </LocalizedNames>
 </Workflow>
