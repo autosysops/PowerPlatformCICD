@@ -2,7 +2,7 @@
 # The module combines the flows of every solution into one diagram:
 # which solution calls which domain, and which flows can be triggered from the internet.
 
-Import-Module PowerPlatformChecker
+Import-Module PowerPlatformChecker -MinimumVersion 1.4.0
 
 # Every folder in ./Solutions is an unpacked solution, the module reads them all.
 # PAC deployment values override solution defaults for the external-location view.
