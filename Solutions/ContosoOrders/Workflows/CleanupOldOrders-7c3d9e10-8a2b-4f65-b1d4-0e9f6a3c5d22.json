@@ -12,7 +12,17 @@
       "contentVersion": "1.0.0.0",
       "parameters": {
         "$authentication": { "defaultValue": {}, "type": "SecureObject" },
-        "$connections": { "defaultValue": {}, "type": "Object" }
+        "$connections": { "defaultValue": {}, "type": "Object" },
+        "SharePoint Site (contoso_SharePointSite)": {
+          "defaultValue": "https://contoso.sharepoint.com/sites/Sales",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_SharePointSite" }
+        },
+        "SharePoint List (contoso_SharePointList)": {
+          "defaultValue": "Orders",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_SharePointList" }
+        }
       },
       "triggers": {
         "Recurrence": {
@@ -25,8 +35,8 @@
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
-              "dataset": "https://contoso.sharepoint.com/sites/Sales",
-              "table": "Orders",
+              "dataset": "@parameters('SharePoint Site (contoso_SharePointSite)')",
+              "table": "@parameters('SharePoint List (contoso_SharePointList)')",
               "$filter": "Status eq 'Expired'"
             },
             "host": {
@@ -41,8 +51,8 @@
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
-              "dataset": "https://contoso.sharepoint.com/sites/Sales",
-              "table": "Orders",
+              "dataset": "@parameters('SharePoint Site (contoso_SharePointSite)')",
+              "table": "@parameters('SharePoint List (contoso_SharePointList)')",
               "id": "@first(outputs('Get_items')?['body/value'])?['ID']"
             },
             "host": {

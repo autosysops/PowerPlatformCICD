@@ -18,10 +18,25 @@
       "parameters": {
         "$authentication": { "defaultValue": {}, "type": "SecureObject" },
         "$connections": { "defaultValue": {}, "type": "Object" },
-        "Erp Base Url (contoso_ErpBaseUrl)": {
-          "defaultValue": "https://erp.contoso.example/api",
+        "SharePoint Site (contoso_SharePointSite)": {
+          "defaultValue": "https://contoso.sharepoint.com/sites/Sales",
           "type": "String",
-          "metadata": { "schemaName": "contoso_ErpBaseUrl" }
+          "metadata": { "schemaName": "contoso_SharePointSite" }
+        },
+        "SharePoint List (contoso_SharePointList)": {
+          "defaultValue": "Orders",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_SharePointList" }
+        },
+        "SQL Server (contoso_SqlServer)": {
+          "defaultValue": "sql.contoso.example",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_SqlServer" }
+        },
+        "SQL Database (contoso_SqlDatabase)": {
+          "defaultValue": "Orders",
+          "type": "String",
+          "metadata": { "schemaName": "contoso_SqlDatabase" }
         }
       },
       "triggers": {
@@ -35,8 +50,8 @@
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
-              "server": "sql.contoso.example",
-              "database": "Orders",
+              "server": "@parameters('SQL Server (contoso_SqlServer)')",
+              "database": "@parameters('SQL Database (contoso_SqlDatabase)')",
               "table": "[dbo].[Orders]"
             },
             "host": {
@@ -59,7 +74,7 @@
                   "type": "Http",
                   "inputs": {
                     "method": "POST",
-                    "uri": "@{parameters('Erp Base Url (contoso_ErpBaseUrl)')}/orders",
+                    "uri": "https://erp.contoso.example/api/orders",
                     "body": "@items('Apply_to_each')"
                   },
                   "runAfter": {}
